@@ -1,0 +1,14 @@
+.container{
+  list-style: none;
+  text-align: left;
+}
+.list{
+  position: relative;
+  margin-bottom: 3px;
+  background-color:  rgb(245, 245, 245);
+}
+.button{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  }

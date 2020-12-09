@@ -1,0 +1,17 @@
+.container{
+  display: block;
+  width: 300px;
+  background-color:  rgb(245, 245, 245);
+  border: 2px solid rgb(228, 173, 173);
+  margin: 0 auto;
+  text-align: left;
+  padding: 5px;
+}
+.label{
+  display: flex;
+  margin-bottom: 10px;
+}
+.input{
+  display: flex;
+  margin-bottom: 15px;
+}
