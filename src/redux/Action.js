@@ -1,0 +1,6 @@
+const ADD = 'ADD_CONTACT';
+const REMOVE = 'REMOVE_CONTACT';
+const TOGGLE = 'TOGGLE_COMPLETED';
+const FILTER = 'FILTER_CONTACTS';
+
+export default { ADD, REMOVE, TOGGLE, FILTER };

@@ -1,25 +1,38 @@
 import React, { Component } from 'react';
 import classes from './ContactForm.module.css';
-import { v4 as uuidv4 } from 'uuid';
+import { connect } from 'react-redux';
+import newContact from '../../redux/listActions';
+import AnswerError from '../AnswerError/AnswerError';
 
-const INITIAL_STATE = {
-  name: '',
-  number: '',
-  id: '',
-};
-
-export default class ContactForm extends Component {
-  state = { ...INITIAL_STATE };
+class ContactForm extends Component {
+  state = {
+    name: '',
+    number: '',
+    isVisible: false,
+    messeg: 'jdfihgeriujdfmkl',
+  };
 
   handleChange = ({ target }) => {
-    // const { name } = this.state;
     this.setState({
-      id: uuidv4(),
       [target.name]: target.value,
     });
   };
   handleSubmit = event => {
     event.preventDefault();
+    const truly = this.props.list.some(
+      contact => contact.name === this.state.name,
+    );
+    if (truly) {
+      this.setState({
+        isVisible: true,
+      });
+      setTimeout(() => {
+        this.setState({
+          isVisible: false,
+        });
+      }, 1500);
+      return;
+    }
     this.props.addContact({ ...this.state });
     this.setState({
       name: '',
@@ -28,9 +41,13 @@ export default class ContactForm extends Component {
   };
 
   render() {
-    const { name, number } = this.state;
+    const { name, number, isVisible, messeg } = this.state;
     return (
       <>
+        <div>
+          <AnswerError isVisible={isVisible} messeg={messeg} />
+        </div>
+
         <form
           className={classes.container}
           action=""
@@ -65,3 +82,13 @@ export default class ContactForm extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  list: state.contacts.items,
+});
+
+const mapDispatchToProps = {
+  addContact: newContact.addContact,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

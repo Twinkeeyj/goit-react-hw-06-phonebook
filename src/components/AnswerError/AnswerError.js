@@ -1,9 +1,21 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
 
-const AnswerError = ({ answer }) => <div className="answerContainer">{answer}</div>;
+import { CSSTransition } from 'react-transition-group';
+import '../../index.css';
 
-AnswerError.propTypes = {
-  answer: PropTypes.string.isRequired,
+const AnswerError = ({ isVisible }) => {
+  return (
+    <CSSTransition
+      in={isVisible}
+      timeout={250}
+      classNames="answer"
+      unmountOnExit
+    >
+      <div className="answerContainer">
+        <p>Contact already declared</p>
+      </div>
+    </CSSTransition>
+  );
 };
+
 export default AnswerError;
