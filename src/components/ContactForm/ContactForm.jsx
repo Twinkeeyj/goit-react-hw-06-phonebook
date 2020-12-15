@@ -9,7 +9,6 @@ class ContactForm extends Component {
     name: '',
     number: '',
     isVisible: false,
-    messeg: 'jdfihgeriujdfmkl',
   };
 
   handleChange = ({ target }) => {
@@ -41,11 +40,11 @@ class ContactForm extends Component {
   };
 
   render() {
-    const { name, number, isVisible, messeg } = this.state;
+    const { name, number, isVisible } = this.state;
     return (
       <>
         <div>
-          <AnswerError isVisible={isVisible} messeg={messeg} />
+          <AnswerError isVisible={isVisible} />
         </div>
 
         <form

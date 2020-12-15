@@ -23,7 +23,7 @@ class ContactList extends Component {
                   <button
                     className={classes.button}
                     type="button"
-                    onClick={() => this.props.Delete(el.id)}
+                    onClick={() => this.props.delete(el.id)}
                   >
                     Удалить
                   </button>
@@ -54,7 +54,7 @@ const mapStateToProps = state => ({
   ),
 });
 const mapDispatchToProps = {
-  Delete: listActions.removeContact,
+  delete: listActions.removeContact,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
